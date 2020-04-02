@@ -55,9 +55,9 @@ var controller = {
     processGuess: function (guess) {
         var location = parseGuess(guess);
         if (location) {
-            this.guess++;
+            this.guesses++;
             var hit = model.fire(location);
-            if (hit && model.shipSunk === model.numShips) {
+            if (hit && model.shipsSunk === model.numShips) {
                 view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses");
             }
         }
@@ -82,3 +82,17 @@ function parseGuess(guess) {
     }
     return null;
 }
+
+function init() {
+    var fireButton = document.getElementById("fireButton");
+    fireButton.onclick = handleFireButton;
+}
+
+function handleFireButton() {
+    var guessInput = document.getElementById("guessInput");
+    var guess = guessInput.value;
+    controller.processGuess(guess);
+    guessInput.value = "";
+}
+
+window.onload = init;
