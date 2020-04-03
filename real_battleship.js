@@ -86,6 +86,8 @@ function parseGuess(guess) {
 function init() {
     var fireButton = document.getElementById("fireButton");
     fireButton.onclick = handleFireButton;
+    var guessInput = document.getElementById("guessInput");
+    guessInput.onkeypress = handleKeyPress;
 }
 
 function handleFireButton() {
@@ -93,6 +95,14 @@ function handleFireButton() {
     var guess = guessInput.value;
     controller.processGuess(guess);
     guessInput.value = "";
+}
+
+function handleKeyPress(e) {
+    var fireButton = document.getElementById("fireButton");
+    if (e.code === "Enter") {
+        fireButton.click();
+        return false;
+    }
 }
 
 window.onload = init;
