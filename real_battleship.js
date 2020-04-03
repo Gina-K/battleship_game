@@ -1,3 +1,4 @@
+// Keep the display updated with hits, misses and messages for the user
 var view = {
     displayMessage: function (msg) {
         var messageArea = document.getElementById("messageArea");
@@ -13,6 +14,7 @@ var view = {
     }
 };
 
+// Keep track of the ships: where they are, if they/ve been hit, and if they've been sunk
 var model = {
     boardSize: 7,
     numShips: 3,
@@ -50,6 +52,7 @@ var model = {
     }
 };
 
+// Glue everything together including getting the player's input and executing the game logic
 var controller = {
     guesses: 0,
     processGuess: function (guess) {
@@ -64,6 +67,7 @@ var controller = {
     }
 };
 
+// Get a player's guess, check the input (is it valid?) and convert it to "01" like form (instead of "A1")
 function parseGuess(guess) {
     var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
     if (guess === null || guess.length !== 2) {
@@ -83,6 +87,7 @@ function parseGuess(guess) {
     return null;
 }
 
+// An event handlers functions
 function init() {
     var fireButton = document.getElementById("fireButton");
     fireButton.onclick = handleFireButton;
