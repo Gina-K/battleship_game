@@ -69,7 +69,7 @@ function parseGuess(guess) {
     if (guess === null || guess.length !== 2) {
         alert("Oops, please enter a letter and a number on the board.");
     } else {
-        var firstChar = guess.charAt(0);
+        var firstChar = guess.charAt(0).toUpperCase();
         var row = alphabet.indexOf(firstChar);
         var column = guess.charAt(1);
         if (isNaN(row) || isNaN(column)) {
