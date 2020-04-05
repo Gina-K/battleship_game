@@ -27,7 +27,10 @@ var model = {
         for (var i = 0; i < this.numShips; i++) {
             var ship = this.ships[i];
             var index = ship.locations.indexOf(guess);
-            if (index >= 0) {
+            if (ship.hits[index] === "hit") {
+                view.displayMessage("Oops, you already hit that location!");
+                return true;
+            } else if (index >= 0) {
                 ship.hits[index] = "hit";
                 view.displayHit(guess);
                 view.displayMessage("HIT!");
